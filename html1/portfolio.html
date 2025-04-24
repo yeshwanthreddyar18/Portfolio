@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio Website</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: white;
+            background-color: #333;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+        }
+
+        #header {
+            background: url('images/background.png') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            position: relative;
+        }
+
+        nav ul li a:hover::after {
+            content: '';
+            width: 100%;
+            height: 3px;
+            background: #fff;
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            transition: width 0.5s;
+        }
+
+        .header-text {
+            margin-top: 20px;
+        }
+
+        .header-text h1 {
+            font-size: 60px;
+        }
+
+        #about {
+            padding: 80px 0;
+            background-color: #444;
+        }
+
+        .row {
+            display: flex;
+        }
+
+        .about-col-1 {
+            flex: 35%;
+        }
+
+        .about-col-2 {
+            flex: 60%;
+            padding-left: 20px;
+        }
+
+        .tab-titles {
+            margin: 20px 0;
+        }
+
+        .tab-links {
+            margin-right: 50px;
+            cursor: pointer;
+        }
+
+        .tab-contents {
+            display: none;
+        }
+
+        .tab-contents.active-tab {
+            display: block;
+        }
+
+        #services {
+            padding: 30px 0;
+            background-color: #555;
+        }
+
+        .services-list {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .services-list div {
+            background: #666;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            flex: 1;
+            margin: 10px;
+        }
+
+        .services-list div i {
+            font-size: 50px;
+        }
+
+        #portfolio {
+            padding: 50px 0;
+            background-color: #666;
+        }
+
+        .work-list {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .work {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .work img {
+            width: 100%;
+            border-radius: 10px;
+            transition: transform 0.5s;
+        }
+
+        .work:hover img {
+            transform: scale(1.1);
+        }
+
+        .layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .work:hover .layer {
+            opacity: 1;
+        }
+
+        #contact {
+            padding: 50px 0;
+            background-color: #777;
+        }
+
+        .contact-left, .contact-right {
+            flex: 50%;
+        }
+
+        .contact-left h1 {
+            margin-bottom: 20px;
+        }
+
+        .social-icons a {
+            margin-right: 15px;
+            color: white;
+            font-size: 30px;
+        }
+
+        .social-icons a:hover {
+            color: #ccc;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #888;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background: #999;
+        }
+
+        .copyright {
+            text-align: center;
+            padding: 20px 0;
+            background: #222;
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="header">
+        <div class="container">
+            <nav>
+                <img src="images/logo.png" class="logo" alt="Logo">
+                <ul>
+                    <li><a href="#header">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-text">
+                <p>Welcome to my portfolio</p>
+                <h1>I'm Manushree M</h1>
+            </div>
+        </div>
+    </div>
+
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="about-col-1">
+                    <img src="images/user.jpg" alt="User  Image">
+                </div>
+                <div class="about-col-2">
+                    <h1>About Me</h1>
+                    <p>Throughout my academic journey, I embraced diverse roles, representing my institution at interschool competitions. As a Green Club member, I participated in rallies for environmental awareness and won several prizes showcasing my commitment and versatility.</p>
+                    <div class="tab-titles">
+                        <p class="tab-links active-link" onclick="openTab('skills')">Skills</p>
+                        <p class="tab-links" onclick="openTab('education')">Education</p>
+                    </div>
+                    <div class="tab-contents active-tab" id="skills">
+                        <ul>
+                            <li><span>HTML</span><br>Building web pages</li>
+                            <li><span>Data Science</span><br>A multidisciplinary field that uses scientific methods, processes, algorithms, and systems to extract knowledge or insights from data.</li>
+                            <li><span>JavaScript</span><br>Adding interactivity</li>
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="education">
+                        <ul>
+                            <li><span>Bachelor's in Computer Science</span><br>Presidency University</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="services">
+        <div class="container">
+            <h1>My Services</h1>
+            <div class="services-list">
+                <div>
+                    <i class="fas fa-code"></i>
+                    <h2>Web Development</h2>
+                    <p>Building responsive and functional websites.</p>
+                    <a href="#">Learn More</a>
+                </div>
+                <div>
+                    <i class="fas fa-paint-brush"></i>
+                    <h2>UI/UX Design</h2>
+                    <p>Creating user-friendly interfaces.</p>
+                    <a href="#">Learn More</a>
+                </div>
+                <div>
+                    <i class="fas fa-mobile-alt"></i>
+                    <h2>Mobile Development</h2>
+                    <p>Developing mobile applications.</p>
+                    <a href="#">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="portfolio">
+        <div class="container">
+            <h1>My Work</h1>
+            <div class="work-list">
+                <div class="work">
+                    <img src="images/work1.jpeg" alt="Work 1">
+                    <div class="layer">
+                        <h3>Coffee vending machine and Waste disposal</h3>
+                        <p>During my second semester at college, I undertook a coffee vending machine project utilizing Arduino, and in my fourth semester, I completed a waste disposal project employing Raspberry Pi.</p>
+                        <a href="#"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+            <a href="#" class="btn">See More</a>
+        </div>
+    </div>
+
+    <div id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="contact-left">
+                    <h1>Contact Me</h1>
+                    <p><i class="fas fa-envelope"></i> manushreem@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> 7204730692</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="contact-right">
+                    <form id="contact-form">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Your Email" required>
+                        <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
+                        <button type="submit" class="btn">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="copyright">
+        <p>Copyrights © 2023</p>
+    </div>
+
+    <script>
+        function openTab(tabName) {
+            const tabs = document.querySelectorAll('.tab-contents');
+            const links = document.querySelectorAll('.tab-links');
+
+            tabs.forEach(tab => {
+                tab.classList.remove('active-tab');
+            });
+
+            links.forEach(link => {
+                link.classList.remove('active-link');
+            });
+
+            document.getElementById(tabName).classList.add('active-tab');
+            document.querySelector(`.tab-links[onclick*="${tabName}"]`).classList.add('active-link');
+        }
+
+        // Handle form submission
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Message sent successfully!');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
